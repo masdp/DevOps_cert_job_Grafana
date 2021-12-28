@@ -14,4 +14,10 @@ Run Jenkins pipeline.
 
 Follow link http://stage-ip/ 
 
+##How to use Grafana?
+
+Browse to http://stage-ip:3000 . You will see javamelody on Grafana.
+Use the following data for authorization:
+User: admin
+Password: admin 
 
