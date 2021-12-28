@@ -21,7 +21,7 @@
     copy: src={{item}} dest=/tmp/stage directory_mode=yes
     with_items:
         - docker-compose.yml
-        - grafana
+        - "grafana/"
         - prometheus.yml
 
   - name: Create and start services

@@ -16,13 +16,6 @@ services:
     image: masdp/final_grafana
     ports:
       - 80:8080
-    volumes:
-      - type: volume
-        source: prometheus
-        target: /tmp/prometheus.yml
-      - type: volume
-        source: grafana
-        target: /tmp/grafana
     depends_on:
       - db 
 
