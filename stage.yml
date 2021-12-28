@@ -18,9 +18,11 @@
     file: path=/tmp/stage state=directory
 
   - name: copy files
-    copy: src={{item}} dest=/tmp/stage
+    copy: src={{item}} dest=/tmp/stage directory_mode=yes
     with_items:
         - docker-compose.yml
+        - grafana
+        - prometheus.yml
 
   - name: Create and start services
     docker_compose:
