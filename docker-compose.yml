@@ -13,8 +13,29 @@ services:
       - /tmp/mysql:/var/lib/mysql
 
   prod:
-    image: masdp/final
+    image: masdp/final_grafana
     ports:
       - 80:8080
     depends_on:
       - db 
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'
+    depends_on:
+      - prod
+
+  grafana:
+    image: grafana/grafana:latest
+    user: root
+    volumes:
+      - ./grafana:/var/lib/grafana
+    depends_on:
+      - prometheus
+    ports:
+      - "3000:3000"

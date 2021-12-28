@@ -1,0 +1,13 @@
+
+scrape_configs:
+
+
+  - job_name: 'App42'
+    scheme: http
+    metrics_path: '/monitoring'
+    params:
+      format: ['prometheus']
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['prod:8080']
+
