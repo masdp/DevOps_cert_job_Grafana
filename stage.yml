@@ -18,7 +18,7 @@
     file: path=/tmp/stage state=directory
 
   - name: copy files
-    copy: src={{item}} dest=/tmp/stage directory_mode=yes
+    copy: src={{item}} dest=/tmp/stage 
     with_items:
         - docker-compose.yml
         - "grafana/"
