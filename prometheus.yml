@@ -9,5 +9,5 @@ scrape_configs:
       format: ['prometheus']
     scrape_interval: 5s
     static_configs:
-      - targets: ['prod:8080']
+      - targets: ['stage:8080']
 

@@ -12,17 +12,26 @@ services:
     volumes:
       - /tmp/mysql:/var/lib/mysql
 
-  prod:
+  stage:
     image: masdp/final_grafana
     ports:
       - 80:8080
+    volumes:
+      - type: volume
+        source: prometheus
+        target: /tmp/prometheus.yml
+      - type: volume
+        source: grafana
+        target: /tmp/grafana
     depends_on:
       - db 
 
   prometheus:
     image: prom/prometheus:latest
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - type: volume
+        source: prometheus
+        target: /etc/prometheus/prometheus.yml
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
     ports:
@@ -34,8 +43,14 @@ services:
     image: grafana/grafana:8.3.2
     user: root
     volumes:
-      - ./grafana:/var/lib/grafana
+      - type: volume
+        source: prometheus
+        target: /var/lib/grafana
     depends_on:
       - prometheus
     ports:
       - "3000:3000"
+
+volumes:
+  prometheus:
+  grafana:
