@@ -4,7 +4,7 @@ agent any
     stages {
         stage('git clone project') {
           steps {
-                git 'https://github.com/masdp/DevOps_cert_job.git'
+                git 'https://github.com/masdp/DevOps_cert_job_Grafana.git'
           }
         }
 
