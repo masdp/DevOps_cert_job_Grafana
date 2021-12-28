@@ -33,7 +33,7 @@
       source: build
       build:
         path: /tmp/build
-      name: masdp/final
+      name: masdp/final_grafana
       tag: latest
       push: yes
 
