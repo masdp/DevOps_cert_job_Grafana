@@ -2,13 +2,13 @@ provider "aws" {
   region = "${var.region}"
 }
 
-resource "aws_instance" "build" {
+resource "aws_instance" "build1" {
   instance_type   = "${var.instance_type}"
   ami             = "${var.ami_id}"
   key_name        = "${var.key_name}"
   vpc_security_group_ids = ["${var.security_group}"]
   tags = {
-    Name = "build"
+    Name = "build1"
   }
   
   provisioner "remote-exec" {
